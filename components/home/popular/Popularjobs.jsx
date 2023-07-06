@@ -25,10 +25,6 @@ const Popularjobs = () => {
     },
   });
 
-  const handleCardPress = (item) => {
-    console.log("item", item.employer_name);
-  };
-
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -49,7 +45,9 @@ const Popularjobs = () => {
             renderItem={({ item }) => (
               <PopularJobCard
                 item={item}
-                handleCardPress={handleCardPress}
+                handleCardPress={() =>
+                  router.push(`/job-details/${item?.job_id}`)
+                }
                 selectedJob={selectedJob}
               />
             )}
