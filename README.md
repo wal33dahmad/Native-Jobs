@@ -1,3 +1,5 @@
 # Native Jobs
 
-Open [`App Link`](exp://exp.host/@wal33dahmad/native-jobs?release-channel=default) in your device to test it.
+Open `Live App Link` in your device to test it.
+
+URL: exp://exp.host/@wal33dahmad/native-jobs?release-channel=default
