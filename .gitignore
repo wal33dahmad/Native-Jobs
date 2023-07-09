@@ -12,6 +12,7 @@ npm-debug.*
 web-build/
 .env
 .env.*
+secret.js
 
 # macOS
 .DS_Store
