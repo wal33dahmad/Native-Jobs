@@ -5,6 +5,19 @@
       "bundler": "metro"
     },
     "name": "native-jobs",
-    "slug": "native-jobs"
+    "slug": "native-jobs",
+    "extra": {
+      "eas": {
+        "projectId": "335aa37c-8e80-4a80-a53e-190f7d58175d"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "sdkVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/335aa37c-8e80-4a80-a53e-190f7d58175d"
+    },
+    "android": {},
+    "ios": {}
   }
 }
