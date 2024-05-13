@@ -17,7 +17,9 @@
     "updates": {
       "url": "https://u.expo.dev/335aa37c-8e80-4a80-a53e-190f7d58175d"
     },
-    "android": {},
+    "android": {
+      "package": "com.wal33dahmad.nativejobs"
+    },
     "ios": {}
   }
 }
