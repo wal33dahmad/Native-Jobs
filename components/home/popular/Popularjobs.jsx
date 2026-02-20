@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import {
   View,
   Text,
@@ -25,6 +25,17 @@ const Popularjobs = () => {
     },
   });
 
+  const uniqueJobs = useMemo(() => {
+    if (!data) return [];
+    const seen = new Set();
+    return data.filter((job) => {
+      const id = job?.job_id;
+      if (!id || seen.has(id)) return false;
+      seen.add(id);
+      return true;
+    });
+  }, [data]);
+
   const handleCardPress = (item) => {
     setSelectedJob(item?.job_id);
     router.push(`/job-details/${item?.job_id}`);
@@ -46,7 +57,7 @@ const Popularjobs = () => {
           <Text>Something went wrong!</Text>
         ) : (
           <FlatList
-            data={data}
+            data={uniqueJobs}
             renderItem={({ item }) => (
               <PopularJobCard
                 item={item}

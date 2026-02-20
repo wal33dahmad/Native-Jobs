@@ -24,6 +24,10 @@ const styles = StyleSheet.create({
     width: "70%",
     height: "70%",
   },
+  logoPlaceholder: {
+    fontSize: 18,
+    fontFamily: FONT.bold,
+  },
   companyName: {
     fontSize: SIZES.medium,
     fontFamily: FONT.regular,

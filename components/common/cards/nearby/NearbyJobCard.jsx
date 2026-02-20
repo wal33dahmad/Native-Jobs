@@ -2,20 +2,28 @@ import React from "react";
 import { View, Text, TouchableOpacity, Image } from "react-native";
 
 import styles from "./nearbyjobcard.style";
+import { checkImageURL, getEmployerInitials } from "../../../../utils";
 
 const NearbyJobCard = ({ job, handleNavigate }) => {
+  const hasLogo = checkImageURL(job?.employer_logo);
+
   return (
     <TouchableOpacity style={styles.container} onPress={handleNavigate}>
       <TouchableOpacity style={styles.logoContainer}>
-        <Image
-          source={{
-            uri: job.employer_logo
-              ? job.employer_logo
-              : "https://via.placeholder.com/150",
-          }}
-          resizeMode="contain"
-          style={styles.logoImage}
-        />
+        {hasLogo ? (
+          <Image
+            source={{ uri: job.employer_logo }}
+            resizeMode="contain"
+            style={styles.logoImage}
+          />
+        ) : (
+          <Text
+            style={styles.logoPlaceholder}
+            numberOfLines={1}
+          >
+            {getEmployerInitials(job?.employer_name)}
+          </Text>
+        )}
       </TouchableOpacity>
 
       <View style={styles.textContainer}>

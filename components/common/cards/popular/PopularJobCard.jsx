@@ -2,22 +2,35 @@ import React from "react";
 import { View, Text, TouchableOpacity, Image } from "react-native";
 
 import styles from "./popularjobcard.style";
-import { checkImageURL } from "../../../../utils";
+import { checkImageURL, getEmployerInitials } from "../../../../utils";
+import { COLORS } from "../../../../constants";
 
 const PopularJobCard = ({ item, selectedJob, handleCardPress }) => {
+  const hasLogo = checkImageURL(item?.employer_logo);
+
   return (
     <TouchableOpacity
       style={styles.container(selectedJob, item)}
       onPress={() => handleCardPress(item)}
     >
       <TouchableOpacity style={styles.logoContainer(selectedJob, item)}>
-        <Image
-          source={{
-            uri: item.employer_logo,
-          }}
-          resizeMode="contain"
-          style={styles.logoImage}
-        />
+        {hasLogo ? (
+          <Image
+            source={{ uri: item.employer_logo }}
+            resizeMode="contain"
+            style={styles.logoImage}
+          />
+        ) : (
+          <Text
+            style={[
+              styles.logoPlaceholder,
+              { color: selectedJob === item.job_id ? COLORS.primary : COLORS.gray },
+            ]}
+            numberOfLines={1}
+          >
+            {getEmployerInitials(item?.employer_name)}
+          </Text>
+        )}
       </TouchableOpacity>
       <Text style={styles.companyName} numberOfLines={1}>
         {item.employer_name}

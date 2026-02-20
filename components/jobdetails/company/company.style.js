@@ -20,6 +20,11 @@ const styles = StyleSheet.create({
     width: "80%",
     height: "80%",
   },
+  logoPlaceholder: {
+    fontSize: 24,
+    fontFamily: FONT.bold,
+    color: COLORS.gray,
+  },
   jobTitleBox: {
     marginTop: SIZES.small,
   },

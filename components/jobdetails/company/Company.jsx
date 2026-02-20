@@ -3,17 +3,25 @@ import { View, Text, Image } from "react-native";
 
 import styles from "./company.style";
 import { icons } from "../../../constants";
+import { checkImageURL, getEmployerInitials } from "../../../utils";
 
 const Company = ({ companyLogo, jobTitle, companyName, location }) => {
+  const hasLogo = checkImageURL(companyLogo);
+
   return (
     <View style={styles.container}>
       <View style={styles.logoBox}>
-        <Image
-          source={{
-            uri: companyLogo ? companyLogo : "https://via.placeholder.com/150",
-          }}
-          style={styles.logoImage}
-        />
+        {hasLogo ? (
+          <Image
+            source={{ uri: companyLogo }}
+            style={styles.logoImage}
+            resizeMode="contain"
+          />
+        ) : (
+          <Text style={styles.logoPlaceholder} numberOfLines={1}>
+            {getEmployerInitials(companyName)}
+          </Text>
+        )}
       </View>
 
       <View style={styles.jobTitleBox}>

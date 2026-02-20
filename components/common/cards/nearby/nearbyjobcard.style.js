@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 
-import { COLORS, SHADOWS, SIZES } from "../../../../constants";
+import { COLORS, FONT, SHADOWS, SIZES } from "../../../../constants";
 
 const styles = StyleSheet.create({
   container: {
@@ -25,6 +25,11 @@ const styles = StyleSheet.create({
   logoImage: {
     width: "70%",
     height: "70%",
+  },
+  logoPlaceholder: {
+    fontSize: 18,
+    fontFamily: FONT.bold,
+    color: COLORS.gray,
   },
   textContainer: {
     flex: 1,

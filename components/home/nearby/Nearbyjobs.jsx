@@ -18,6 +18,17 @@ const NearbyJobs = () => {
     },
   });
 
+  const uniqueJobs = React.useMemo(() => {
+    if (!data) return [];
+    const seen = new Set();
+    return data.filter((job) => {
+      const id = job?.job_id;
+      if (!id || seen.has(id)) return false;
+      seen.add(id);
+      return true;
+    });
+  }, [data]);
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -33,11 +44,11 @@ const NearbyJobs = () => {
         ) : error ? (
           <Text>Something went wrong!</Text>
         ) : (
-          data?.map((job, idx) => (
+          uniqueJobs.map((job) => (
             <NearbyJobCard
-              key={`nearby-job-${job?.job_id}`}
+              key={`nearby-job-${job.job_id}`}
               job={job}
-              handleNavigate={() => router.push(`/job-details/${job?.job_id}`)}
+              handleNavigate={() => router.push(`/job-details/${job.job_id}`)}
             />
           ))
         )}
